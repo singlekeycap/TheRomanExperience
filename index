@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html x-data="{colorMode: localStorage.getItem('colorMode') || localStorage.setItem('colorMode', 'light')}" x-init="$watch('colorMode', val => localStorage.setItem('colorMode', val))" x-bind:class="{'dark': colorMode === 'dark' || (colorMode === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)}" class="scroll-smooth">
+
+<head>
+    <title>Overview - The Roman Experience</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content=""/>
+    <meta property="og:title" content="Overview - The Roman Experience"/>
+    <meta property="og:image" content=""/>
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.png"/>
+    <link id="heading-font" rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800;900&display=swap" media="all"/>
+    <link rel="stylesheet" href="./css/styles.min.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
+</head>
+
+<body class="font-body antialiased text-[#41454c] bg-[#FCFCFC] dark:text-[#FFFFFF] dark:bg-[#031022]">
+
+    <!-- Header -->
+    <section class="bg-white fixed w-full shadow dark:shadow-slate-800" style="top:0em">
+        <div class="container flex items-center justify-between mx-auto overflow-hidden font-medium max-w-7xl h-16 px-4 md:overflow-visible md:flex-row md:justify-around lg:justify-center">
+            <div class="items-start justify-center w-full space-x-6 text-center text-sm hidden md:w-2/3 md:mt-0 md:flex-row md:items-center md:flex md:justify-start lg:space-x-8">
+                <a class="inline-block w-full py-2 mx-0 ml-6 font-medium text-left md:ml-0 md:w-auto md:px-0 md:mx-2 md:text-center md:text-primary-500 lg:mx-3" href="https://rome.andreadallara.com">Overview</a>
+                <a class="inline-block w-full py-2 mx-0 font-medium text-left md:w-auto md:px-0 md:mx-2 hover:text-primary lg:mx-3 md:text-center" href="./pompeii.html">Pompeii</a>
+                <a class="inline-block w-full py-2 mx-0 font-medium text-left md:w-auto md:px-0 md:mx-2 hover:text-primary lg:mx-3 md:text-center" href="./herculaneum.html">Herculaneum</a>
+            </div>
+            <div class="flex items-center justify-start h-full pr-4 md:w-2/3 md:justify-center md:pr-0">
+                <a class="py-4 flex md:py-0" href="https://rome.andreadallara.com">
+                    <h1 class="text-2xl font-bold tracking-tighter text-primary-500">The Roman Experience</h1>
+                </a>
+            </div>
+            <div class="items-start justify-center w-full space-x-6 text-center text-sm hidden md:w-2/3 md:mt-0 md:flex-row md:items-center md:flex md:justify-end lg:space-x-8">
+                <a class="inline-block w-full py-2 mx-0 font-medium text-left md:w-auto md:px-0 md:mx-2 hover:text-primary lg:mx-3 md:text-center" href="./naples.html">Naples</a>
+                <a class="inline-block w-full py-2 mx-0 font-medium text-left md:w-auto md:px-0 md:mx-2 hover:text-primary lg:mx-3 md:text-center" href="./basilicas.html">Basilicas</a>
+                <a class="inline-block w-full py-2 mx-0 font-medium text-left md:w-auto md:px-0 md:mx-2 hover:text-primary lg:mx-3 md:text-center" href="./monuments.html">Monuments</a>
+            </div>
+            <div :data-headlessui-state="open ? &#x27;open&#x27;: &#x27;&#x27;" x-data="{open: false}" class="md:hidden">
+                <div :data-headlessui-state="open ? &#x27;open&#x27;: &#x27;&#x27;" x-on:click="open = !open">
+                    <span class="w-full text-3xl md:hidden">
+                        <svg stroke="currentColor" fill="none" strokeWidth="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                    </span>
+                </div>
+                <ul :data-headlessui-state="open ? &#x27;open&#x27;: &#x27;&#x27;" class="absolute text-gray-900 mt-2 origin-top-right divide-y divide-gray-100 shadow-lg left-px right-px pl-2 pt-5 pb-4 bg-white dark:bg-black dark:text-slate-100 dark:divide-gray-700 dark:shadow-gray-800" x-show="open">
+                    <li x-data="{active: false}" :data-headlessui-state="active ? &#x27;active&#x27; : &#x27;&#x27;" class="group flex items-center w-full px-2 py-2 text-sm" x-on:mouseenter="active = true" x-on:mouseleave="active = false">
+                        <a href="#">Intro</a>
+                    </li>
+                    <li x-data="{active: false}" :data-headlessui-state="active ? &#x27;active&#x27; : &#x27;&#x27;" class="group flex items-center w-full px-2 py-2 text-sm" x-on:mouseenter="active = true" x-on:mouseleave="active = false">
+                        <a href="#">Features</a>
+                    </li>
+                    <li x-data="{active: false}" :data-headlessui-state="active ? &#x27;active&#x27; : &#x27;&#x27;" class="group flex items-center w-full px-2 py-2 text-sm" x-on:mouseenter="active = true" x-on:mouseleave="active = false">
+                        <a href="#">Login</a>
+                    </li>
+                    <li x-data="{active: false}" :data-headlessui-state="active ? &#x27;active&#x27; : &#x27;&#x27;" class="group flex items-center w-full px-2 py-2 text-sm" x-on:mouseenter="active = true" x-on:mouseleave="active = false">
+                        <a href="#">Sign Up</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Spacer -->
+    <div class="h-16"></div>
+
+    <!-- Overview -->
+    <div class="md:py-16">
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <h1 class="font-bold tracking-tight dark:text-slate-100 text-4xl text-slate-900 lg:text-5xl">A Quick Overview</h1>
+                <p class="text-base lg:text-lg 2xl:text-gray-500">The Roman Experience is a class dedicated to the art, architecture, and engineering in Ancient Rome. This website is dedicated to the study tour associated with the class, and the sights seen throughout it.</p>
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/dome.png" />
+            </div>
+        </div>
+    </div>
+
+    <!-- Itinerary -->
+    <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full md:px-24 md:py-14 lg:max-w-screen-xl lg:px-8 lg:py-12">
+        <div class="mb-10 border-t border-b divide-y xl:max-w-7xl xl:mx-auto">
+            <div class="grid py-8 sm:grid-cols-4" id="Day0">
+                <div class="mb-4 sm:mb-0">
+                    <div class="space-y-1 text-xs font-semibold tracking-wide uppercase">
+                        <a class=" transition-colors duration-200 text-primary-500" href="#Day0">Day 0</a>
+                        <p>27 Apr 2023</p>
+                    </div>
+                </div>
+                <div class="sm:col-span-3">
+                    <div class="mb-3">
+                        <p class="inline-block transition-colors duration-200 text-3xl font-extrabold leading-none text-slate-900 dark:text-slate-100">A flight to Italy's heart</p>
+                    </div>
+                    <p class="lg:mr-10">Today was filled with travel. From an early morning to a 7 hour layover at JFK, we were all pretty exhausted. It definitely didn't help that there's a 6 hour time difference between the US and Italy. All in all, those of us who couldn't sleep on the plane were up for 34-36 hours.</p>
+                </div>
+            </div>
+            <div class="grid py-8 sm:grid-cols-4" id="Day1">
+                <div class="mb-4 sm:mb-0">
+                    <div class="space-y-1 text-xs font-semibold tracking-wide uppercase">
+                        <a class=" transition-colors duration-200 text-primary-500" href="#Day1">Day 1</a>
+                        <p>28 Apr 2023</p>
+                    </div>
+                </div>
+                <div class="sm:col-span-3">
+                    <div class="mb-3">
+                        <p class="inline-block transition-colors duration-200 text-3xl font-extrabold leading-none text-slate-900 dark:text-slate-100">Naples, much more than pizza</p>
+                    </div>
+                    <p class="lg:mr-10">After such a long flight, we got on a bus and traveled the two and a half hour drive to Naples. After checking into our hotel and freshening up a bit, we walked around downtown Naples. We arrived at Castel Nuovo, where Dr. Rassati managed to get us the last tour of the day. We saw tons of things from the prisoners' quarters, to gothic architecture, to the King's room. Later, we split into smaller groups and found places to eat and things to do for the night (apart from sleeping).</p>
+                </div>
+            </div>
+            <div class="grid py-8 sm:grid-cols-4" id="Day2">
+                <div class="mb-4 sm:mb-0">
+                    <div class="space-y-1 text-xs font-semibold tracking-wide uppercase">
+                        <a class=" transition-colors duration-200 text-primary-500" href="#Day2">Day 2</a>
+                        <p>29 Apr 2023</p>
+                    </div>
+                </div>
+                <div class="sm:col-span-3">
+                    <div class="mb-3">
+                        <p class="inline-block transition-colors duration-200 text-3xl font-extrabold leading-none text-slate-900 dark:text-slate-100">Unveiling Pompeii's past</p>
+                    </div>
+                    <p class="lg:mr-10">With some sleep in us, we departed for Pompeii. Upon arrival, most of us had no idea how incredibly large the site was, especially since all we could see was an outside wall. Once inside, we visited a few places including the amphitheater, a couple houses, a watch tower, what used to be a water tower, the forum, and the basilica. We also saw a few casts of those who died in the blast, and a good amount of preserved frescos and mosaics. Then, we went to the archeological museum, and saw incredibly detailed mosaics, the "chamber of secrets" (as I like to call it), and a few statues. Like yesterday, we split into smaller groups, and one even got interviewed by Canale 21 (a local Naples news station)!</p>
+                </div>
+            </div>
+            <div class="grid py-8 sm:grid-cols-4" id="Day3">
+                <div class="mb-4 sm:mb-0">
+                    <div class="space-y-1 text-xs font-semibold tracking-wide uppercase">
+                        <a class=" transition-colors duration-200 text-primary-500" href="#Day3">Day 3</a>
+                        <p>30 Apr 2023</p>
+                    </div>
+                </div>
+                <div class="sm:col-span-3">
+                    <div class="mb-3">
+                        <p class="inline-block transition-colors duration-200 text-3xl font-extrabold leading-none text-slate-900 dark:text-slate-100">The lost wonders of Herculaneum and Domus Aurea</p>
+                    </div>
+                    <p class="lg:mr-10">Herculaneum was an interesting site to see. It looked much more well preserved than Pompeii, and it felt much more like a quaint village rather than a large and crowded city. We saw what we would consider "summer homes", a gym, an incredibly shallow pool, and the remains of a basilica of sorts. Later in the day, as we had made it back to Rome, we visited the Domus Aurea. It was incredible that Nero had such a huge plan in the works, but it was also sad how little respect the first visitors of this palace had towards the art they found. I found it really cool that they had a VR segment of the tour where we could see the palace in it's original glory. Unfortunately, I got rained on and was freezing throughout the tour.</p>
+                </div>
+            </div>
+            <div class="grid py-8 sm:grid-cols-4" id="Day4">
+                <div class="mb-4 sm:mb-0">
+                    <div class="space-y-1 text-xs font-semibold tracking-wide uppercase">
+                        <a class=" transition-colors duration-200 text-primary-500" href="#Day4">Day 4</a>
+                        <p>01 May 2023</p>
+                    </div>
+                </div>
+                <div class="sm:col-span-3">
+                    <div class="mb-3">
+                        <p class="inline-block transition-colors duration-200 text-3xl font-extrabold leading-none text-slate-900 dark:text-slate-100">Churches and the Roman Forum: faith and history</p>
+                    </div>
+                    <p class="lg:mr-10">While most were celebrating Labor Day, we were out touring churches and basilicas. Most churches looked very barren and small from the outside, but once we stepped inside, we were hit by a massive nave filled with sculptures, paintings, and mosaics. Most basilicas had a larger façade, yet didn't look as impressive outside as they did inside. Similarly, they were filled with mosaics, paintings, and sculptures. After seeing these wonders, we reached the Roman Forum. I was impressed by how everything looked so organized and much like a city center. Unfortunately, not everything was well-preserved, though we were able to see massive arches (used as newspapers), and many other things from the outside. We then head into the Colosseum, and saw everything from the engineering used to make elevators to the art of mosaics and "graffiti".</p>
+                </div>
+            </div>
+            <div class="grid py-8 sm:grid-cols-4" id="Day5">
+                <div class="mb-4 sm:mb-0">
+                    <div class="space-y-1 text-xs font-semibold tracking-wide uppercase">
+                        <a class=" transition-colors duration-200 text-primary-500" href="#Day5">Day 5</a>
+                        <p>02 May 2023</p>
+                    </div>
+                </div>
+                <div class="sm:col-span-3">
+                    <div class="mb-3">
+                        <p class="inline-block transition-colors duration-200 text-3xl font-extrabold leading-none text-slate-900 dark:text-slate-100">The walking tour of Rome and the Vatican</p>
+                    </div>
+                    <p class="lg:mr-10">As the title says, a lot of walking was done on this day. By the end of it I had accumulated approx. 23-24 thousand steps, but I think it was worth it. We saw sights from San Carlino (a very small church), to Chiesa del Gesù (a very large church). We then head over to the Vatican Museums, and saw a lot of frescos, tapestries, sculptures, and maps. Unfortunately, not many had any respect for the Sistine Chapel, and they talked a lot and took photos and/or video. At some point, one of the keepers came on the speaker to tell people to shut up. St. Peter's basilica was impressive, as the pictures definitely didn't do it justice. Everything was massive, and incredibly well made. From decorations on the walls, to statues built into the columns, everything was incredibly well thought out, even though the design changed hands multiple times.</p>
+                </div>
+            </div>
+            <div class="grid py-8 sm:grid-cols-4" id="Day6">
+                <div class="mb-4 sm:mb-0">
+                    <div class="space-y-1 text-xs font-semibold tracking-wide uppercase">
+                        <a class=" transition-colors duration-200 text-primary-500" href="#Day6">Day 6</a>
+                        <p>03 May 2023</p>
+                    </div>
+                </div>
+                <div class="sm:col-span-3">
+                    <div class="mb-3">
+                        <p class="inline-block transition-colors duration-200 text-3xl font-extrabold leading-none text-slate-900 dark:text-slate-100">A fountain, WWII, a dome, what more?</p>
+                    </div>
+                    <p class="lg:mr-10">They say if you throw one coin into Trevi fountain you come back to Rome, two and you find a partner, and three... I forgot. The fountain was beautiful, although we had already seen it a day or two prior. It baffles me how large the Romans made their monuments to display how much water they had. We also saw the balcony from which Mussolini gave his speeches, and then the dome. Not a dome, the dome. The Pantheon's dome was huge. It was so large that even taking a vertical panorama was not enough to get the entire thing in shot. We then saw a couple more churches, such as Santa Maria Sopra Minerva, and St. Augustine, and then went to Castel Sant' Angelo. There, we saw an incredible view of Rome, and rooms that were full of history.</p>
+                </div>
+            </div>
+            <div class="grid py-8 sm:grid-cols-4" id="Day7">
+                <div class="mb-4 sm:mb-0">
+                    <div class="space-y-1 text-xs font-semibold tracking-wide uppercase">
+                        <a class=" transition-colors duration-200 text-primary-500" href="#Day7">Day 7</a>
+                        <p>04 May 2023</p>
+                    </div>
+                </div>
+                <div class="sm:col-span-3">
+                    <div class="mb-3">
+                        <p class="inline-block transition-colors duration-200 text-3xl font-extrabold leading-none text-slate-900 dark:text-slate-100">Ra da dadadada da da Circus da da dadadada da da Maxiumus</p>
+                    </div>
+                    <p class="lg:mr-10">Hoping you read the title in Afro Circus style, bad joke, I know. We visited the Circus Maximus, and imagined what it would be like in it's glory. We then went to the Baths of Caracalla, and saw how huge and somewhat well-engineered they were. I say somewhat because the lack of filtration meant the waters must have been full of algae. Other than that, it must have looked beautiful when it was first built. We then went to Santa Maria del Popolo, and me and Mike D. went to the Basilica dei Santi Ambrogio e Carlo. It was incredibly beautiful. Reunited with the group, we went to Piazza di Spagna, where we saw the Spanish Steps, which were full of flowers. After that, we went to the Villa Borghese, where we saw paintings and sculptures that we had only seen in class before, such as Bernini's "David" and "Apollo and Daphne", and a few other incredibly well-made sculptures.</p>
+                </div>
+            </div>
+            <div class="grid py-8 sm:grid-cols-4" id="Day8">
+                <div class="mb-4 sm:mb-0">
+                    <div class="space-y-1 text-xs font-semibold tracking-wide uppercase">
+                        <a class=" transition-colors duration-200 text-primary-500" href="#Day8">Day 8</a>
+                        <p>05 May 2023</p>
+                    </div>
+                </div>
+                <div class="sm:col-span-3">
+                    <div class="mb-3">
+                        <p class="inline-block transition-colors duration-200 text-3xl font-extrabold leading-none text-slate-900 dark:text-slate-100">No plans? No problem</p>
+                    </div>
+                    <p class="lg:mr-10">Today was a free day, but that doesn't mean we stayed in bed. While I might not be speaking for all of us, we made the best of our time off. Me, Mike D., and Alfred decided to wake up early to head to the Vatican. We decided to go up St. Peter's dome, and the view was absolutely incredible. Unfortunately, it was a tight space, so a couple of us were quite uncomfortable on the way up. I then went shopping with another smaller group, but didn't buy anything as I had gone broke (doesn't help that my bank locked me out of my account). After that, we split groups again, but decided that almost the whole group should go to a restaurant together for our final day. All in all, it was a great day, and we all were able to do our own things without the stress of making an appointment (like the Vatican Museums).</p>
+                </div>
+            </div>
+            <div class="grid py-8 sm:grid-cols-4" id="Day9">
+                <div class="mb-4 sm:mb-0">
+                    <div class="space-y-1 text-xs font-semibold tracking-wide uppercase">
+                        <a class=" transition-colors duration-200 text-primary-500" href="#Day9">Day 9</a>
+                        <p>06 May 2023</p>
+                    </div>
+                </div>
+                <div class="sm:col-span-3">
+                    <div class="mb-3">
+                        <p class="inline-block transition-colors duration-200 text-3xl font-extrabold leading-none text-slate-900 dark:text-slate-100">Finding our way home</p>
+                    </div>
+                    <p class="lg:mr-10">I'm sure some tears were shed on this day, as we are all already missing Italy. The wonders of architecture and art seen will forever be engrained in our brains, and the effects of the marvels of engineering are clearly visible today. Some child kicking my seat for the entire flight didn't help much either.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Students/Professors -->
+    <div class="px-4 py-16 mx-auto sm:max-w-xl sm:py-14 md:max-w-full md:px-24 lg:max-w-screen-xl lg:px-8">
+        <div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
+            <h2 class="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-slate-900 dark:text-slate-100 sm:text-4xl md:mx-auto">The Class</h2>
+        </div>
+        <div class="grid gap-10 row-gap-8 mx-auto sm:row-gap-10 lg:max-w-screen-lg sm:grid-cols-2 lg:grid-cols-3">
+            <div class="flex">
+                <img class="object-cover w-20 h-20 mr-4 rounded-full shadow bg-blue-100" src="./assets/people/Sahr.png" />
+                <div class="flex flex-col justify-center">
+                    <p class="text-lg font-bold text-slate-900 dark:text-slate-100">Sahr Alisher</p>
+                    <p>Student</p>
+                </div>
+            </div>
+            <div class="flex">
+                <img class="object-cover w-20 h-20 mr-4 rounded-full shadow bg-blue-100" src="./assets/people/Caitlin.png" />
+                <div class="flex flex-col justify-center">
+                    <p class="text-lg font-bold text-slate-900 dark:text-slate-100">Caitlin Berendt</p>
+                    <p>Student</p>
+                </div>
+            </div>
+            <div class="flex">
+                <img class="object-cover w-20 h-20 mr-4 rounded-full shadow bg-blue-100" src="./assets/people/Holly.png" />
+                <div class="flex flex-col justify-center">
+                    <p class="text-lg font-bold text-slate-900 dark:text-slate-100">Holly Blazek</p>
+                    <p>Student</p>
+                </div>
+            </div>
+            <div class="flex">
+                <img class="object-cover w-20 h-20 mr-4 rounded-full shadow bg-blue-100" src="./assets/people/Megan.png" />
+                <div class="flex flex-col justify-center">
+                    <p class="text-lg font-bold text-slate-900 dark:text-slate-100">Megan Brand</p>
+                    <p>Student</p>
+                </div>
+            </div>
+            <div class="flex">
+                <img class="object-cover w-20 h-20 mr-4 rounded-full shadow bg-blue-100" src="./assets/people/Taryn.png" />
+                <div class="flex flex-col justify-center">
+                    <p class="text-lg font-bold text-slate-900 dark:text-slate-100">Taryn Brown</p>
+                    <p>Student</p>
+                </div>
+            </div>
+            <div class="flex">
+                <img class="object-cover w-20 h-20 mr-4 rounded-full shadow bg-blue-100" src="./assets/people/Alfred.png" />
+                <div class="flex flex-col justify-center">
+                    <p class="text-lg font-bold text-slate-900 dark:text-slate-100">Alfred Carducci</p>
+                    <p>Student</p>
+                </div>
+            </div>
+            <div class="flex">
+                <img class="object-cover w-20 h-20 mr-4 rounded-full shadow bg-blue-100" src="./assets/people/Elsa.png" />
+                <div class="flex flex-col justify-center">
+                    <p class="text-lg font-bold text-slate-900 dark:text-slate-100">Elsa Concannon</p>
+                    <p>Student</p>
+                </div>
+            </div>
+            <div class="flex">
+                <img class="object-cover w-20 h-20 mr-4 rounded-full shadow bg-blue-100" src="./assets/people/Madi.png" />
+                <div class="flex flex-col justify-center">
+                    <p class="text-lg font-bold text-slate-900 dark:text-slate-100">Madi Coulson</p>
+                    <p>Student</p>
+                </div>
+            </div>
+            <div class="flex">
+                <img class="object-cover w-20 h-20 mr-4 rounded-full shadow bg-blue-100" src="./assets/people/Siena.png" />
+                <div class="flex flex-col justify-center">
+                    <p class="text-lg font-bold text-slate-900 dark:text-slate-100">Siena Cutforth</p>
+                    <p>Student</p>
+                </div>
+            </div>
+            <div class="flex">
+                <img class="object-cover w-20 h-20 mr-4 rounded-full shadow bg-blue-100" src="./assets/people/Andrea.png" />
+                <div class="flex flex-col justify-center">
+                    <p class="text-lg font-bold text-slate-900 dark:text-slate-100">Andrea Dall'Ara</p>
+                    <p>Student</p>
+                </div>
+            </div>
+            <div class="flex">
+                <img class="object-cover w-20 h-20 mr-4 rounded-full shadow bg-blue-100" src="./assets/people/Trinity.png" />
+                <div class="flex flex-col justify-center">
+                    <p class="text-lg font-bold text-slate-900 dark:text-slate-100">Trinity David</p>
+                    <p>Student</p>
+                </div>
+            </div>
+            <div class="flex">
+                <img class="object-cover w-20 h-20 mr-4 rounded-full shadow bg-blue-100" src="./assets/people/Bre.png" />
+                <div class="flex flex-col justify-center">
+                    <p class="text-lg font-bold text-slate-900 dark:text-slate-100">Bre Devillier</p>
+                    <p>Student</p>
+                </div>
+            </div>
+            <div class="flex">
+                <img class="object-cover w-20 h-20 mr-4 rounded-full shadow bg-blue-100" src="./assets/people/Mike.png" />
+                <div class="flex flex-col justify-center">
+                    <p class="text-lg font-bold text-slate-900 dark:text-slate-100">Mike Drummond</p>
+                    <p>Student</p>
+                </div>
+            </div>
+            <div class="flex">
+                <img class="object-cover w-20 h-20 mr-4 rounded-full shadow bg-blue-100" src="./assets/people/Nick.png" />
+                <div class="flex flex-col justify-center">
+                    <p class="text-lg font-bold text-slate-900 dark:text-slate-100">Nick Garcia</p>
+                    <p>Student</p>
+                </div>
+            </div>
+            <div class="flex">
+                <img class="object-cover w-20 h-20 mr-4 rounded-full shadow bg-blue-100" src="./assets/people/MaddieG.png" />
+                <div class="flex flex-col justify-center">
+                    <p class="text-lg font-bold text-slate-900 dark:text-slate-100">Maddie Gillock</p>
+                    <p>Student</p>
+                </div>
+            </div>
+            <div class="flex">
+                <img class="object-cover w-20 h-20 mr-4 rounded-full shadow bg-blue-100" src="./assets/people/Autumn.png" />
+                <div class="flex flex-col justify-center">
+                    <p class="text-lg font-bold text-slate-900 dark:text-slate-100">Autumn King</p>
+                    <p>Student</p>
+                </div>
+            </div>
+            <div class="flex">
+                <img class="object-cover w-20 h-20 mr-4 rounded-full shadow bg-blue-100" src="./assets/people/Asher.png" />
+                <div class="flex flex-col justify-center">
+                    <p class="text-lg font-bold text-slate-900 dark:text-slate-100">Asher Martin</p>
+                    <p>Student</p>
+                </div>
+            </div>
+            <div class="flex">
+                <img class="object-cover w-20 h-20 mr-4 rounded-full shadow bg-blue-100" src="./assets/people/MaddieS.png" />
+                <div class="flex flex-col justify-center">
+                    <p class="text-lg font-bold text-slate-900 dark:text-slate-100">Maddie Schamel</p>
+                    <p>Student</p>
+                </div>
+            </div>
+            <div class="flex">
+                <img class="object-cover w-20 h-20 mr-4 rounded-full shadow bg-blue-100" src="./assets/people/Michael.png" />
+                <div class="flex flex-col justify-center">
+                    <p class="text-lg font-bold text-slate-900 dark:text-slate-100">Michael Shobe</p>
+                    <p>Student</p>
+                </div>
+            </div>
+            <div class="flex">
+                <img class="object-cover w-20 h-20 mr-4 rounded-full shadow bg-blue-100" src="./assets/people/Moe.png" />
+                <div class="flex flex-col justify-center">
+                    <p class="text-lg font-bold text-slate-900 dark:text-slate-100">Moe Sumra</p>
+                    <p>Student</p>
+                </div>
+            </div>
+            <div class="flex">
+                <img class="object-cover w-20 h-20 mr-4 rounded-full shadow bg-blue-100" src="./assets/people/GASwanson.png" />
+                <div class="flex flex-col justify-center">
+                    <p class="text-md font-bold text-slate-900 dark:text-slate-100">Drs. Rassati and Swanson</p>
+                    <p>Professors</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="text-center py-1 max-w-7xl mx-auto border-t border-gray-200 dark:border-gray-600">
+        <p class="w-4/5 mx-auto my-5 text-sm leading-5 h-4">© 2023, Andrea Dall'Ara. All Rights Reserved</p>
+    </div>
+
+    <!-- AlpineJS Library -->
+    <script defer src="https://unpkg.com/alpinejs@3.9.0/dist/cdn.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            offset: 50,
+            duration: 800
+        });
+    </script>
+</body>
+</html>
