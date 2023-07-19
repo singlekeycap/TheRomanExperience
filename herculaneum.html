@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html x-data="{colorMode: localStorage.getItem('colorMode') || localStorage.setItem('colorMode', 'light')}" x-init="$watch('colorMode', val => localStorage.setItem('colorMode', val))" x-bind:class="{'dark': colorMode === 'dark' || (colorMode === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)}" class="scroll-smooth">
+
+<head>
+    <title>Herculaneum - The Roman Experience</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="The Roman Experience is a focus on the art, architecture, and engineering of Ancient Rome, including a study tour of the related sights."/>
+    <meta property="og:title" content="Herculaneum - The Roman Experience"/>
+    <meta property="og:image" content="https://rome.andreadallara.com/assets/favicon.png"/>
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.png"/>
+    <link id="heading-font" rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800;900&display=swap" media="all"/>
+    <link rel="stylesheet" href="./css/styles.min.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
+</head>
+
+<body class="font-body antialiased text-[#41454c] bg-[#FCFCFC] dark:text-[#FFFFFF] dark:bg-[#031022]">
+
+    <!-- Navbar -->
+    <section class="bg-white fixed w-full shadow dark:shadow-slate-800" style="top:0em">
+        <div class="container flex items-center justify-between mx-auto overflow-hidden font-medium max-w-7xl h-16 px-4 md:overflow-visible md:flex-row md:justify-around lg:justify-center">
+            <div class="items-start justify-center w-full space-x-6 text-center text-sm hidden md:w-2/3 md:mt-0 md:flex-row md:items-center md:flex md:justify-start lg:space-x-8">
+                <a class="inline-block w-full py-2 mx-0 font-medium text-left md:w-auto md:px-0 md:mx-2 hover:text-primary lg:mx-3 md:text-center" href="./index.html">Overview</a>
+                <a class="inline-block w-full py-2 mx-0 font-medium text-left md:w-auto md:px-0 md:mx-2 hover:text-primary lg:mx-3 md:text-center" href="./pompeii.html">Pompeii</a>
+                <a class="inline-block w-full py-2 mx-0 ml-6 font-medium text-left md:ml-0 md:w-auto md:px-0 md:mx-2 md:text-center md:text-primary-500 lg:mx-3" href="./herculaneum.html">Herculaneum</a>
+            </div>
+            <div class="flex items-center justify-start h-full pr-4 md:w-2/3 md:justify-center md:pr-0">
+                <a class="py-4 flex md:py-0" href="./index.html">
+                    <h1 class="text-2xl font-bold tracking-tighter text-primary-500">The Roman Experience</h1>
+                </a>
+            </div>
+            <div class="items-start justify-center w-full space-x-6 text-center text-sm hidden md:w-2/3 md:mt-0 md:flex-row md:items-center md:flex md:justify-end lg:space-x-8">
+                <a class="inline-block w-full py-2 mx-0 font-medium text-left md:w-auto md:px-0 md:mx-2 hover:text-primary lg:mx-3 md:text-center" href="./naples.html">Naples</a>
+                <a class="inline-block w-full py-2 mx-0 font-medium text-left md:w-auto md:px-0 md:mx-2 hover:text-primary lg:mx-3 md:text-center" href="./basilicas.html">Basilicas</a>
+                <a class="inline-block w-full py-2 mx-0 font-medium text-left md:w-auto md:px-0 md:mx-2 hover:text-primary lg:mx-3 md:text-center" href="./monuments.html">Monuments</a>
+            </div>
+            <div :data-headlessui-state="open ? &#x27;open&#x27;: &#x27;&#x27;" x-data="{open: false}" class="md:hidden">
+                <div :data-headlessui-state="open ? &#x27;open&#x27;: &#x27;&#x27;" x-on:click="open = !open">
+                    <span class="w-full text-3xl md:hidden">
+                        <svg stroke="currentColor" fill="none" strokeWidth="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                    </span>
+                </div>
+                <ul :data-headlessui-state="open ? &#x27;open&#x27;: &#x27;&#x27;" class="absolute text-gray-900 mt-2 origin-top-right divide-y divide-gray-100 shadow-lg left-px right-px pl-2 pt-5 pb-4 bg-white dark:bg-black dark:text-slate-100 dark:divide-gray-700 dark:shadow-gray-800" x-show="open">
+                    <li x-data="{active: false}" :data-headlessui-state="active ? &#x27;active&#x27; : &#x27;&#x27;" class="group flex items-center w-full px-2 py-2 text-sm" x-on:mouseenter="active = true" x-on:mouseleave="active = false">
+                        <a href="./index.html">Overview</a>
+                    </li>
+                    <li x-data="{active: false}" :data-headlessui-state="active ? &#x27;active&#x27; : &#x27;&#x27;" class="group flex items-center w-full px-2 py-2 text-sm" x-on:mouseenter="active = true" x-on:mouseleave="active = false">
+                        <a href="./pompeii.html">Pompeii</a>
+                    </li>
+                    <li x-data="{active: true}" :data-headlessui-state="active ? &#x27;active&#x27; : &#x27;&#x27;" class="group flex items-center w-full px-2 py-2 text-sm" x-on:mouseenter="active = true" x-on:mouseleave="active = false">
+                        <a href="./herculaneum.html">Herculaneum</a>
+                    </li>
+                    <li x-data="{active: false}" :data-headlessui-state="active ? &#x27;active&#x27; : &#x27;&#x27;" class="group flex items-center w-full px-2 py-2 text-sm" x-on:mouseenter="active = true" x-on:mouseleave="active = false">
+                        <a href="./naples.html">Naples</a>
+                    </li>
+                    <li x-data="{active: false}" :data-headlessui-state="active ? &#x27;active&#x27; : &#x27;&#x27;" class="group flex items-center w-full px-2 py-2 text-sm" x-on:mouseenter="active = true" x-on:mouseleave="active = false">
+                        <a href="./basilicas.html">Basilicas</a>
+                    </li>
+                    <li x-data="{active: false}" :data-headlessui-state="active ? &#x27;active&#x27; : &#x27;&#x27;" class="group flex items-center w-full px-2 py-2 text-sm" x-on:mouseenter="active = true" x-on:mouseleave="active = false">
+                        <a href="./monuments.html">Monuments</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Spacer -->
+    <div class="h-16"></div>
+
+    <!-- Hero/Main -->
+    <div class="md:py-16">
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <h1 class="font-bold tracking-tight dark:text-slate-100 text-4xl text-slate-900 lg:text-5xl">Herculaneum</h1>
+                <p class="text-base lg:text-lg 2xl:text-gray-500">Herculaneum, located near Mount Vesuvius, was a prosperous ancient Roman town preserved by the eruption in 79 AD. Its well-preserved ruins offer insights into Roman daily life and culture, with magnificent frescoes and architecture showcasing its opulence. Exploring Herculaneum provides a captivating journey through time, revealing the grandeur and tragedy of this once-thriving city.</p>
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/herculaneum/pano.png" />
+            </div>
+        </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="border-t border-gray-200 dark:border-gray-700"></div>
+
+    <!-- Gallery -->
+    <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+        <h1 class="font-bold tracking-tight dark:text-slate-100 text-4xl text-slate-900 lg:text-5xl">A Short Gallery</h1>
+        <div class="h-16"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <h1 class="font-black tracking-normal text-3xl dark:text-slate-100 sm:text-4xl sm:text-slate-900">The Bones</h1>
+                <p class="text-base lg:text-lg 2xl:text-gray-500">The fake bones in the boat houses of Herculaneum are a haunting reminder of the tragic fate that befell its inhabitants. As the volcanic ash engulfed the town, it instantly suffocated and preserved the bodies of those who were unable to escape. These skeletal remains provide a somber glimpse into the final moments of the city's residents. Despite their sorrowful nature, they offer valuable insights into the human toll and the immense impact of the volcanic catastrophe. The visible bones in Herculaneum stand as a poignant testament to the immense power and devastating consequences of natural disasters throughout history.</p>
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/herculaneum/bones.png" />
+            </div>
+        </div>
+        <div class="h-16"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/herculaneum/boat.png" />
+            </div>
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <h1 class="font-black tracking-normal text-3xl dark:text-slate-100 sm:text-4xl sm:text-slate-900">The Boat</h1>
+                <p class="text-base lg:text-lg 2xl:text-gray-500">The recovered boat stands as a remarkable testament to the maritime culture and trade of the ancient Roman city. Discovered in 1982 during excavation work, this well-preserved boat, known as the Herculaneum Boat, offers valuable insights into ancient shipbuilding techniques and navigation practices. Measuring over 9 meters in length, it provides evidence of the vibrant maritime activities that took place along the Bay of Naples during that time. The boat's excavation and subsequent preservation efforts have shed light on the significant role of maritime trade in the economic and cultural life of Herculaneum.</p>
+            </div>
+        </div>
+        <div class="h-16"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <h1 class="font-black tracking-normal text-3xl dark:text-slate-100 sm:text-4xl sm:text-slate-900">The View</h1>
+                <p class="text-base lg:text-lg 2xl:text-gray-500">In the evening, the affluent residents of Herculaneum would have enjoyed the enchanting view from their beachfront villas, relishing the serene beauty of the azure waters as the backdrop, but the catastrophic eruption of Mount Vesuvius in 79 AD transformed the landscape, burying the town under layers of dirt and volcanic ash that now obstruct the once-captivating view. This serves as a poignant reminder of the transient nature of human opulence and the enduring forces of nature.</p>
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/herculaneum/view.png" />
+            </div>
+        </div>
+        <div class="h-16"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/herculaneum/partition.png" />
+            </div>
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <h1 class="font-black tracking-normal text-3xl dark:text-slate-100 sm:text-4xl sm:text-slate-900">The Sliding Partition</h1>
+                <p class="text-base lg:text-lg 2xl:text-gray-500">One of the intriguing discoveries in Herculaneum is the well-preserved sliding partition, which provides valuable insights into the architectural ingenuity of the ancient Romans. This sliding partition, also known as a "pilastrum" or "hostis," was designed to divide and adapt the living spaces according to the inhabitants' needs. Its intricate design and craftsmanship demonstrate the advanced engineering skills of the time. Exploring this preserved artifact allows visitors to appreciate the innovative solutions implemented by the ancient Romans in creating functional and adaptable living spaces.</p>
+            </div>
+        </div>
+        <div class="h-16"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <h1 class="font-black tracking-normal text-3xl dark:text-slate-100 sm:text-4xl sm:text-slate-900">The Baths</h1>
+                <p class="text-base lg:text-lg 2xl:text-gray-500">The baths of Herculaneum, similar to those found in other Roman cities, were a central and vital part of daily life. These well-preserved bath complexes offer insights into the ancient Roman bathing culture and hygienic practices. The baths featured a range of facilities, including hot and cold rooms, heated pools, and exercise areas. Elaborate mosaics, decorative frescoes, and intricate architectural details adorned the bath complexes, showcasing the opulence and aesthetic sensibilities of the time. Exploring the baths of Herculaneum provides a fascinating window into the social and communal aspects of Roman society, as well as the importance placed on physical well-being and relaxation.</p>
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/herculaneum/baths.png" />
+            </div>
+        </div>
+        <div class="h-16"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/herculaneum/ads.png" />
+            </div>
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <h1 class="font-black tracking-normal text-3xl dark:text-slate-100 sm:text-4xl sm:text-slate-900">The Advertisements</h1>
+                <p class="text-base lg:text-lg 2xl:text-gray-500">The advertisements of Herculaneum offer intriguing glimpses into the commercial and social aspects of the ancient Roman city. Preserved on the walls of buildings, these ancient advertisements, known as "graffiti" or "inscriptions," provide insights into the goods and services available to the residents. Some of these inscriptions are accompanied by fascinating images, such as the depiction of four different bottles for sale (pictured). These images alongside the inscriptions reveal the diverse range of products that were advertised and sought after in Herculaneum. From public announcements and political campaigns to personal advertisements and declarations of affection, these inscriptions and images paint a vivid picture of the diverse and vibrant daily life in the city. Studying these advertisements offers a fascinating connection to the commercial activities, social interactions, and cultural dynamics of this ancient Roman city.</p>
+            </div>
+        </div>
+      </div>
+
+    <!-- Footer -->
+    <div class="text-center py-1 max-w-7xl mx-auto border-t border-gray-200 dark:border-gray-600">
+        <p class="w-4/5 mx-auto my-5 text-sm leading-5 h-4">© 2023, Andrea Dall'Ara. Some Rights Reserved</p>
+    </div>
+
+    <!-- AlpineJS Library -->
+    <script defer src="https://unpkg.com/alpinejs@3.9.0/dist/cdn.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            offset: 50,
+            duration: 800
+        });
+    </script>
+</body>
+</html>

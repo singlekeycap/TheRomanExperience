@@ -16,16 +16,16 @@
 
 <body class="font-body antialiased text-[#41454c] bg-[#FCFCFC] dark:text-[#FFFFFF] dark:bg-[#031022]">
 
-    <!-- Header -->
+    <!-- Navbar -->
     <section class="bg-white fixed w-full shadow dark:shadow-slate-800" style="top:0em">
         <div class="container flex items-center justify-between mx-auto overflow-hidden font-medium max-w-7xl h-16 px-4 md:overflow-visible md:flex-row md:justify-around lg:justify-center">
             <div class="items-start justify-center w-full space-x-6 text-center text-sm hidden md:w-2/3 md:mt-0 md:flex-row md:items-center md:flex md:justify-start lg:space-x-8">
-                <a class="inline-block w-full py-2 mx-0 ml-6 font-medium text-left md:ml-0 md:w-auto md:px-0 md:mx-2 md:text-center md:text-primary-500 lg:mx-3" href="https://rome.andreadallara.com">Overview</a>
+                <a class="inline-block w-full py-2 mx-0 ml-6 font-medium text-left md:ml-0 md:w-auto md:px-0 md:mx-2 md:text-center md:text-primary-500 lg:mx-3" href="./index.html">Overview</a>
                 <a class="inline-block w-full py-2 mx-0 font-medium text-left md:w-auto md:px-0 md:mx-2 hover:text-primary lg:mx-3 md:text-center" href="./pompeii.html">Pompeii</a>
                 <a class="inline-block w-full py-2 mx-0 font-medium text-left md:w-auto md:px-0 md:mx-2 hover:text-primary lg:mx-3 md:text-center" href="./herculaneum.html">Herculaneum</a>
             </div>
             <div class="flex items-center justify-start h-full pr-4 md:w-2/3 md:justify-center md:pr-0">
-                <a class="py-4 flex md:py-0" href="https://rome.andreadallara.com">
+                <a class="py-4 flex md:py-0" href="./index.html">
                     <h1 class="text-2xl font-bold tracking-tighter text-primary-500">The Roman Experience</h1>
                 </a>
             </div>
@@ -45,17 +45,23 @@
                     </span>
                 </div>
                 <ul :data-headlessui-state="open ? &#x27;open&#x27;: &#x27;&#x27;" class="absolute text-gray-900 mt-2 origin-top-right divide-y divide-gray-100 shadow-lg left-px right-px pl-2 pt-5 pb-4 bg-white dark:bg-black dark:text-slate-100 dark:divide-gray-700 dark:shadow-gray-800" x-show="open">
-                    <li x-data="{active: false}" :data-headlessui-state="active ? &#x27;active&#x27; : &#x27;&#x27;" class="group flex items-center w-full px-2 py-2 text-sm" x-on:mouseenter="active = true" x-on:mouseleave="active = false">
-                        <a href="#">Intro</a>
+                    <li x-data="{active: true}" :data-headlessui-state="active ? &#x27;active&#x27; : &#x27;&#x27;" class="group flex items-center w-full px-2 py-2 text-sm" x-on:mouseenter="active = true" x-on:mouseleave="active = false">
+                        <a href="./index.html">Overview</a>
                     </li>
                     <li x-data="{active: false}" :data-headlessui-state="active ? &#x27;active&#x27; : &#x27;&#x27;" class="group flex items-center w-full px-2 py-2 text-sm" x-on:mouseenter="active = true" x-on:mouseleave="active = false">
-                        <a href="#">Features</a>
+                        <a href="./pompeii.html">Pompeii</a>
                     </li>
                     <li x-data="{active: false}" :data-headlessui-state="active ? &#x27;active&#x27; : &#x27;&#x27;" class="group flex items-center w-full px-2 py-2 text-sm" x-on:mouseenter="active = true" x-on:mouseleave="active = false">
-                        <a href="#">Login</a>
+                        <a href="./herculaneum.html">Herculaneum</a>
                     </li>
                     <li x-data="{active: false}" :data-headlessui-state="active ? &#x27;active&#x27; : &#x27;&#x27;" class="group flex items-center w-full px-2 py-2 text-sm" x-on:mouseenter="active = true" x-on:mouseleave="active = false">
-                        <a href="#">Sign Up</a>
+                        <a href="./naples.html">Naples</a>
+                    </li>
+                    <li x-data="{active: false}" :data-headlessui-state="active ? &#x27;active&#x27; : &#x27;&#x27;" class="group flex items-center w-full px-2 py-2 text-sm" x-on:mouseenter="active = true" x-on:mouseleave="active = false">
+                        <a href="./basilicas.html">Basilicas</a>
+                    </li>
+                    <li x-data="{active: false}" :data-headlessui-state="active ? &#x27;active&#x27; : &#x27;&#x27;" class="group flex items-center w-full px-2 py-2 text-sm" x-on:mouseenter="active = true" x-on:mouseleave="active = false">
+                        <a href="./monuments.html">Monuments</a>
                     </li>
                 </ul>
             </div>
@@ -120,7 +126,7 @@
                     <div class="mb-3">
                         <p class="inline-block transition-colors duration-200 text-3xl font-extrabold leading-none text-slate-900 dark:text-slate-100">Unveiling Pompeii's past</p>
                     </div>
-                    <p class="lg:mr-10">With some sleep in us, we departed for Pompeii. Upon arrival, most of us had no idea how incredibly large the site was, especially since all we could see was an outside wall. Once inside, we visited a few places including the amphitheater, a couple houses, a watch tower, what used to be a water tower, the forum, and the basilica. We also saw a few casts of those who died in the blast, and a good amount of preserved frescos and mosaics. Then, we went to the archeological museum, and saw incredibly detailed mosaics, the "chamber of secrets" (as I like to call it), and a few statues. Like yesterday, we split into smaller groups, and one even got interviewed by Canale 21 (a local Naples news station)!</p>
+                    <p class="lg:mr-10">With some sleep in us, we departed for Pompeii. Upon arrival, most of us had no idea how incredibly large the site was, especially since all we could see was an outside wall. Once inside, we visited a few places including the amphitheater, a couple houses, a watch tower, what used to be a water tower, the forum, and the basilica. We also saw a few casts of those who died in the blast, and a good amount of preserved frescos and mosaics. Then, we went to the archaeological museum, and saw incredibly detailed mosaics, the "chamber of secrets" (as I like to call it), and a few statues. Like yesterday, we split into smaller groups, and one even got interviewed by Canale 21 (a local Naples news station)!</p>
                 </div>
             </div>
             <div class="grid py-8 sm:grid-cols-4" id="Day3">

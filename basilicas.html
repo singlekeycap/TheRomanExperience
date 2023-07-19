@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html x-data="{colorMode: localStorage.getItem('colorMode') || localStorage.setItem('colorMode', 'light')}" x-init="$watch('colorMode', val => localStorage.setItem('colorMode', val))" x-bind:class="{'dark': colorMode === 'dark' || (colorMode === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)}" class="scroll-smooth">
+
+<head>
+    <title>Basilicas - The Roman Experience</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="The Roman Experience is a focus on the art, architecture, and engineering of Ancient Rome, including a study tour of the related sights."/>
+    <meta property="og:title" content="Basilicas - The Roman Experience"/>
+    <meta property="og:image" content="https://rome.andreadallara.com/assets/favicon.png"/>
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.png"/>
+    <link id="heading-font" rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800;900&display=swap" media="all"/>
+    <link rel="stylesheet" href="./css/styles.min.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
+</head>
+
+<body class="font-body antialiased text-[#41454c] bg-[#FCFCFC] dark:text-[#FFFFFF] dark:bg-[#031022]">
+
+    <!-- Navbar -->
+    <section class="bg-white fixed w-full shadow dark:shadow-slate-800" style="top:0em">
+        <div class="container flex items-center justify-between mx-auto overflow-hidden font-medium max-w-7xl h-16 px-4 md:overflow-visible md:flex-row md:justify-around lg:justify-center">
+            <div class="items-start justify-center w-full space-x-6 text-center text-sm hidden md:w-2/3 md:mt-0 md:flex-row md:items-center md:flex md:justify-start lg:space-x-8">
+                <a class="inline-block w-full py-2 mx-0 font-medium text-left md:w-auto md:px-0 md:mx-2 hover:text-primary lg:mx-3 md:text-center" href="./index.html">Overview</a>
+                <a class="inline-block w-full py-2 mx-0 font-medium text-left md:w-auto md:px-0 md:mx-2 hover:text-primary lg:mx-3 md:text-center" href="./pompeii.html">Pompeii</a>
+                <a class="inline-block w-full py-2 mx-0 font-medium text-left md:w-auto md:px-0 md:mx-2 hover:text-primary lg:mx-3 md:text-center" href="./herculaneum.html">Herculaneum</a>
+            </div>
+            <div class="flex items-center justify-start h-full pr-4 md:w-2/3 md:justify-center md:pr-0">
+                <a class="py-4 flex md:py-0" href="./index.html">
+                    <h1 class="text-2xl font-bold tracking-tighter text-primary-500">The Roman Experience</h1>
+                </a>
+            </div>
+            <div class="items-start justify-center w-full space-x-6 text-center text-sm hidden md:w-2/3 md:mt-0 md:flex-row md:items-center md:flex md:justify-end lg:space-x-8">
+                <a class="inline-block w-full py-2 mx-0 font-medium text-left md:w-auto md:px-0 md:mx-2 hover:text-primary lg:mx-3 md:text-center" href="./naples.html">Naples</a>
+                <a class="inline-block w-full py-2 mx-0 ml-6 font-medium text-left md:ml-0 md:w-auto md:px-0 md:mx-2 md:text-center md:text-primary-500 lg:mx-3" href="./basilicas.html">Basilicas</a>
+                <a class="inline-block w-full py-2 mx-0 font-medium text-left md:w-auto md:px-0 md:mx-2 hover:text-primary lg:mx-3 md:text-center" href="./monuments.html">Monuments</a>
+            </div>
+            <div :data-headlessui-state="open ? &#x27;open&#x27;: &#x27;&#x27;" x-data="{open: false}" class="md:hidden">
+                <div :data-headlessui-state="open ? &#x27;open&#x27;: &#x27;&#x27;" x-on:click="open = !open">
+                    <span class="w-full text-3xl md:hidden">
+                        <svg stroke="currentColor" fill="none" strokeWidth="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                    </span>
+                </div>
+                <ul :data-headlessui-state="open ? &#x27;open&#x27;: &#x27;&#x27;" class="absolute text-gray-900 mt-2 origin-top-right divide-y divide-gray-100 shadow-lg left-px right-px pl-2 pt-5 pb-4 bg-white dark:bg-black dark:text-slate-100 dark:divide-gray-700 dark:shadow-gray-800" x-show="open">
+                    <li x-data="{active: false}" :data-headlessui-state="active ? &#x27;active&#x27; : &#x27;&#x27;" class="group flex items-center w-full px-2 py-2 text-sm" x-on:mouseenter="active = true" x-on:mouseleave="active = false">
+                        <a href="./index.html">Overview</a>
+                    </li>
+                    <li x-data="{active: false}" :data-headlessui-state="active ? &#x27;active&#x27; : &#x27;&#x27;" class="group flex items-center w-full px-2 py-2 text-sm" x-on:mouseenter="active = true" x-on:mouseleave="active = false">
+                        <a href="./pompeii.html">Pompeii</a>
+                    </li>
+                    <li x-data="{active: false}" :data-headlessui-state="active ? &#x27;active&#x27; : &#x27;&#x27;" class="group flex items-center w-full px-2 py-2 text-sm" x-on:mouseenter="active = true" x-on:mouseleave="active = false">
+                        <a href="./herculaneum.html">Herculaneum</a>
+                    </li>
+                    <li x-data="{active: false}" :data-headlessui-state="active ? &#x27;active&#x27; : &#x27;&#x27;" class="group flex items-center w-full px-2 py-2 text-sm" x-on:mouseenter="active = true" x-on:mouseleave="active = false">
+                        <a href="./naples.html">Naples</a>
+                    </li>
+                    <li x-data="{active: true}" :data-headlessui-state="active ? &#x27;active&#x27; : &#x27;&#x27;" class="group flex items-center w-full px-2 py-2 text-sm" x-on:mouseenter="active = true" x-on:mouseleave="active = false">
+                        <a href="./basilicas.html">Basilicas</a>
+                    </li>
+                    <li x-data="{active: false}" :data-headlessui-state="active ? &#x27;active&#x27; : &#x27;&#x27;" class="group flex items-center w-full px-2 py-2 text-sm" x-on:mouseenter="active = true" x-on:mouseleave="active = false">
+                        <a href="./monuments.html">Monuments</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Spacer -->
+    <div class="h-16"></div>
+
+    <!-- Hero/Main -->
+    <div class="md:py-16">
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <h1 class="font-bold tracking-tight dark:text-slate-100 text-4xl text-slate-900 lg:text-5xl">Churches/Basilicas</h1>
+                <p class="text-base lg:text-lg 2xl:text-gray-500">The churches and basilicas of Rome hold immense beauty and historical significance. These architectural marvels stand as testaments to the rich religious and cultural heritage of the city. Adorned with breathtaking artwork, intricate mosaics, and awe-inspiring sculptures, these sacred spaces inspire awe and reverence. From the grandeur of St. Peter's Basilica in Vatican City to the ancient majesty of the Pantheon, Rome's churches and basilicas are not only places of spiritual devotion but also repositories of art and history. They provide a profound connection to the city's past, offering visitors a glimpse into the religious traditions and artistic achievements that have shaped Rome and influenced the world.</p>
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/stpeter.png" />
+            </div>
+        </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="border-t border-gray-200 dark:border-gray-700"></div>
+
+    <!-- Gallery -->
+    <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+        <h1 class="font-bold tracking-tight dark:text-slate-100 text-4xl text-slate-900 lg:text-5xl">Gallery</h1>
+        <div class="h-16"></div>
+        <p class="text-base lg:text-lg 2xl:text-gray-500">Unfortunately, due to a technical glitch the location tags for all the following photos got deleted. This will just be a gallery of basilicas and churches seen throughout the study tour.</p>
+        <div class="h-16"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6019.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6021.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6022.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6023.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6025.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6026.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6027.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6028.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6029.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6030.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6031.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6032.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6033.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6037.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6038.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6039.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6040.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6041.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6043.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6044.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6045.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6046.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6049.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6051.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6052.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6053.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6054.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6059.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6060.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6061.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6062.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6063.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6064.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6065.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6066.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6067.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6068.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6069.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6070.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6071.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6072.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6073.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6074.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6075.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6076.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6077.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6078.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6079.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6080.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6081.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6082.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6152.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6153.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6154.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6155.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6156.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6157.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6158.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6159.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6160.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6161.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6164.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6165.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6166.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6171.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6174.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6175.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6176.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6177.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6178.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6179.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6180.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6181.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6184.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6186.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6187.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6188.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6189.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6190.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6191.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6192.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6194.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6195.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6196.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6197.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6198.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6199.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6200.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6208.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6209.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6210.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6211.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6212.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6213.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6215.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6216.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6217.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6219.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6220.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6242.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6243.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6246.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6247.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6248.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6251.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6253.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6255.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6256.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6257.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6258.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6259.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6260.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6261.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6262.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6263.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6264.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6266.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6267.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6269.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6270.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6271.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6272.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6273.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6274.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6275.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6276.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6277.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6280.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6282.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6288.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6289.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6293.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6294.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6295.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6296.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6297.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6298.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6299.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6382.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6383.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6384.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6385.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6386.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6387.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6388.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6389.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6390.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6391.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6392.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6393.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6394.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6395.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6396.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6397.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6398.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6399.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6400.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6401.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6402.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6403.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6404.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6405.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6406.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6407.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6408.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6410.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6411.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6412.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6414.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6496.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6497.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6498.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6499.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6500.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6501.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6502.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6503.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6504.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6505.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6506.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6507.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6508.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6510.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6511.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6512.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6513.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6532.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6533.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6534.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6535.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6536.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6537.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6538.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6539.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6540.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6541.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6542.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6543.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6544.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6545.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6547.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6548.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6549.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6550.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6551.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6552.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6553.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6554.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6555.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6556.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6557.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6558.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6559.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6560.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/basilicas/IMG_6561.png" />
+            </div>
+        </div>    
+    </div>
+
+    <!-- Footer -->
+    <div class="text-center py-1 max-w-7xl mx-auto border-t border-gray-200 dark:border-gray-600">
+        <p class="w-4/5 mx-auto my-5 text-sm leading-5 h-4">© 2023, Andrea Dall'Ara. Some Rights Reserved</p>
+    </div>
+
+    <!-- AlpineJS Library -->
+    <script defer src="https://unpkg.com/alpinejs@3.9.0/dist/cdn.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            offset: 50,
+            duration: 800
+        });
+    </script>
+</body>
+</html>

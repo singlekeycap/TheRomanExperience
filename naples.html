@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html x-data="{colorMode: localStorage.getItem('colorMode') || localStorage.setItem('colorMode', 'light')}" x-init="$watch('colorMode', val => localStorage.setItem('colorMode', val))" x-bind:class="{'dark': colorMode === 'dark' || (colorMode === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)}" class="scroll-smooth">
+
+<head>
+    <title>Naples - The Roman Experience</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="The Roman Experience is a focus on the art, architecture, and engineering of Ancient Rome, including a study tour of the related sights."/>
+    <meta property="og:title" content="Naples - The Roman Experience"/>
+    <meta property="og:image" content="https://rome.andreadallara.com/assets/favicon.png"/>
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.png"/>
+    <link id="heading-font" rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800;900&display=swap" media="all"/>
+    <link rel="stylesheet" href="./css/styles.min.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
+</head>
+
+<body class="font-body antialiased text-[#41454c] bg-[#FCFCFC] dark:text-[#FFFFFF] dark:bg-[#031022]">
+
+    <!-- Navbar -->
+    <section class="bg-white fixed w-full shadow dark:shadow-slate-800" style="top:0em">
+        <div class="container flex items-center justify-between mx-auto overflow-hidden font-medium max-w-7xl h-16 px-4 md:overflow-visible md:flex-row md:justify-around lg:justify-center">
+            <div class="items-start justify-center w-full space-x-6 text-center text-sm hidden md:w-2/3 md:mt-0 md:flex-row md:items-center md:flex md:justify-start lg:space-x-8">
+                <a class="inline-block w-full py-2 mx-0 font-medium text-left md:w-auto md:px-0 md:mx-2 hover:text-primary lg:mx-3 md:text-center" href="./index.html">Overview</a>
+                <a class="inline-block w-full py-2 mx-0 font-medium text-left md:w-auto md:px-0 md:mx-2 hover:text-primary lg:mx-3 md:text-center" href="./pompeii.html">Pompeii</a>
+                <a class="inline-block w-full py-2 mx-0 font-medium text-left md:w-auto md:px-0 md:mx-2 hover:text-primary lg:mx-3 md:text-center" href="./herculaneum.html">Herculaneum</a>
+            </div>
+            <div class="flex items-center justify-start h-full pr-4 md:w-2/3 md:justify-center md:pr-0">
+                <a class="py-4 flex md:py-0" href="./index.html">
+                    <h1 class="text-2xl font-bold tracking-tighter text-primary-500">The Roman Experience</h1>
+                </a>
+            </div>
+            <div class="items-start justify-center w-full space-x-6 text-center text-sm hidden md:w-2/3 md:mt-0 md:flex-row md:items-center md:flex md:justify-end lg:space-x-8">
+                <a class="inline-block w-full py-2 mx-0 ml-6 font-medium text-left md:ml-0 md:w-auto md:px-0 md:mx-2 md:text-center md:text-primary-500 lg:mx-3" href="./naples.html">Naples</a>
+                <a class="inline-block w-full py-2 mx-0 font-medium text-left md:w-auto md:px-0 md:mx-2 hover:text-primary lg:mx-3 md:text-center" href="./basilicas.html">Basilicas</a>
+                <a class="inline-block w-full py-2 mx-0 font-medium text-left md:w-auto md:px-0 md:mx-2 hover:text-primary lg:mx-3 md:text-center" href="./monuments.html">Monuments</a>
+            </div>
+            <div :data-headlessui-state="open ? &#x27;open&#x27;: &#x27;&#x27;" x-data="{open: false}" class="md:hidden">
+                <div :data-headlessui-state="open ? &#x27;open&#x27;: &#x27;&#x27;" x-on:click="open = !open">
+                    <span class="w-full text-3xl md:hidden">
+                        <svg stroke="currentColor" fill="none" strokeWidth="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                    </span>
+                </div>
+                <ul :data-headlessui-state="open ? &#x27;open&#x27;: &#x27;&#x27;" class="absolute text-gray-900 mt-2 origin-top-right divide-y divide-gray-100 shadow-lg left-px right-px pl-2 pt-5 pb-4 bg-white dark:bg-black dark:text-slate-100 dark:divide-gray-700 dark:shadow-gray-800" x-show="open">
+                    <li x-data="{active: false}" :data-headlessui-state="active ? &#x27;active&#x27; : &#x27;&#x27;" class="group flex items-center w-full px-2 py-2 text-sm" x-on:mouseenter="active = true" x-on:mouseleave="active = false">
+                        <a href="./index.html">Overview</a>
+                    </li>
+                    <li x-data="{active: false}" :data-headlessui-state="active ? &#x27;active&#x27; : &#x27;&#x27;" class="group flex items-center w-full px-2 py-2 text-sm" x-on:mouseenter="active = true" x-on:mouseleave="active = false">
+                        <a href="./pompeii.html">Pompeii</a>
+                    </li>
+                    <li x-data="{active: false}" :data-headlessui-state="active ? &#x27;active&#x27; : &#x27;&#x27;" class="group flex items-center w-full px-2 py-2 text-sm" x-on:mouseenter="active = true" x-on:mouseleave="active = false">
+                        <a href="./herculaneum.html">Herculaneum</a>
+                    </li>
+                    <li x-data="{active: true}" :data-headlessui-state="active ? &#x27;active&#x27; : &#x27;&#x27;" class="group flex items-center w-full px-2 py-2 text-sm" x-on:mouseenter="active = true" x-on:mouseleave="active = false">
+                        <a href="./naples.html">Naples</a>
+                    </li>
+                    <li x-data="{active: false}" :data-headlessui-state="active ? &#x27;active&#x27; : &#x27;&#x27;" class="group flex items-center w-full px-2 py-2 text-sm" x-on:mouseenter="active = true" x-on:mouseleave="active = false">
+                        <a href="./basilicas.html">Basilicas</a>
+                    </li>
+                    <li x-data="{active: false}" :data-headlessui-state="active ? &#x27;active&#x27; : &#x27;&#x27;" class="group flex items-center w-full px-2 py-2 text-sm" x-on:mouseenter="active = true" x-on:mouseleave="active = false">
+                        <a href="./monuments.html">Monuments</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Spacer -->
+    <div class="h-16"></div>
+
+    <!-- Hero/Main -->
+    <div class="md:py-16">
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <h1 class="font-bold tracking-tight dark:text-slate-100 text-4xl text-slate-900 lg:text-5xl">Naples</h1>
+                <p class="text-base lg:text-lg 2xl:text-gray-500">Naples is a captivating city that boasts a rich history, vibrant culture, and stunning natural beauty. It offers breathtaking views of the azure Mediterranean Sea and the imposing Mount Vesuvius. Known for its lively streets, Neapolitan cuisine, and passionate locals, it exudes an irresistible energy and charm. The city is adorned with historic landmarks, such as the Naples Cathedral, Royal Palace, and the famous archaeological museum. Exploring the narrow alleys of the historic center, visitors can immerse themselves in the bustling atmosphere, savor traditional pizza, and discover the city's intriguing past.</p>
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/naples/pano.png" />
+            </div>
+        </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="border-t border-gray-200 dark:border-gray-700"></div>
+
+    <!-- Castel Nuovo -->
+    <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+        <h1 class="font-bold tracking-tight dark:text-slate-100 text-4xl text-slate-900 lg:text-5xl">Castel Nuovo</h1>
+        <div class="h-16"></div>
+        <p class="text-base lg:text-lg 2xl:text-gray-500">Castel Nuovo, also known as the Nuovo Castle, has undergone various eras that have shaped its present-day appearance and significance. Originally built in the 13th century, it served as a royal residence for the Angevin dynasty. Subsequent modifications during the Aragonese period added Gothic elements, including the iconic Triumphal Arch. In the 16th century, Spanish rule led to Renaissance-style renovations and the addition of the Galleria dell'Orologio. The castle's military function diminished over time, and it was repurposed as a museum in the 20th century. Today, Castel Nuovo stands as a blend of architectural styles, embodying the historical layers of Naples and showcasing its cultural heritage to visitors. Below is a gallery of pictures taken in the museum and around the castle.</p>
+        <div class="h-16"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/naples/1_castelnuovo.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/naples/2_castelnuovo.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/naples/3_castelnuovo.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/naples/4_castelnuovo.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/naples/5_castelnuovo.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/naples/6_castelnuovo.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/naples/7_castelnuovo.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/naples/8_castelnuovo.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/naples/9_castelnuovo.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/naples/10_castelnuovo.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/naples/11_castelnuovo.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/naples/12_castelnuovo.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/naples/13_castelnuovo.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/naples/14_castelnuovo.png" />
+            </div>
+        </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="border-t border-gray-200 dark:border-gray-700"></div>
+
+    <!-- Domus Aurea -->
+    <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+        <h1 class="font-bold tracking-tight dark:text-slate-100 text-4xl text-slate-900 lg:text-5xl">Domus Aurea</h1>
+        <div class="h-16"></div>
+        <p class="text-base lg:text-lg 2xl:text-gray-500">The Domus Aurea, or Golden House, was an extravagant palace constructed by the Roman Emperor Nero in the 1st century AD. This sprawling complex was renowned for its opulent design, lavish decorations, and innovative architectural features. However, after Nero's death, subsequent emperors repurposed and dismantled parts of the palace. The Great Fire of Rome in 64 AD further damaged the structure, and the subsequent construction of baths and other buildings led to its burial under layers of soil. Over time, the Domus Aurea was forgotten and its once-grand halls and gardens were covered with earth. Today, the palace appears barren due to the lack of the original decorations (as they were removed and/or damaged) and the intentional removal of soil to preserve the remaining structures. Despite its dilapidated state, the Domus Aurea remains a testament to the extravagance of Nero's reign and continues to intrigue visitors with its remnants of ancient grandeur.</p>
+        <div class="h-16"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/naples/1_domus.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/naples/2_domus.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/naples/3_domus.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/naples/4_domus.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/naples/5_domus.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/naples/6_domus.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/naples/7_domus.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/naples/8_domus.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/naples/9_domus.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/naples/10_domus.png" />
+            </div>
+        </div>
+        <div class="h-6"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/naples/11_domus.png" />
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/naples/12_domus.png" />
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="text-center py-1 max-w-7xl mx-auto border-t border-gray-200 dark:border-gray-600">
+        <p class="w-4/5 mx-auto my-5 text-sm leading-5 h-4">© 2023, Andrea Dall'Ara. Some Rights Reserved</p>
+    </div>
+
+    <!-- AlpineJS Library -->
+    <script defer src="https://unpkg.com/alpinejs@3.9.0/dist/cdn.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            offset: 50,
+            duration: 800
+        });
+    </script>
+</body>
+</html>

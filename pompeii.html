@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html x-data="{colorMode: localStorage.getItem('colorMode') || localStorage.setItem('colorMode', 'light')}" x-init="$watch('colorMode', val => localStorage.setItem('colorMode', val))" x-bind:class="{'dark': colorMode === 'dark' || (colorMode === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)}" class="scroll-smooth">
+
+<head>
+    <title>Pompeii - The Roman Experience</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="The Roman Experience is a focus on the art, architecture, and engineering of Ancient Rome, including a study tour of the related sights."/>
+    <meta property="og:title" content="Pompeii - The Roman Experience"/>
+    <meta property="og:image" content="https://rome.andreadallara.com/assets/favicon.png"/>
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.png"/>
+    <link id="heading-font" rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800;900&display=swap" media="all"/>
+    <link rel="stylesheet" href="./css/styles.min.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
+</head>
+
+<body class="font-body antialiased text-[#41454c] bg-[#FCFCFC] dark:text-[#FFFFFF] dark:bg-[#031022]">
+
+    <!-- Navbar -->
+    <section class="bg-white fixed w-full shadow dark:shadow-slate-800" style="top:0em">
+        <div class="container flex items-center justify-between mx-auto overflow-hidden font-medium max-w-7xl h-16 px-4 md:overflow-visible md:flex-row md:justify-around lg:justify-center">
+            <div class="items-start justify-center w-full space-x-6 text-center text-sm hidden md:w-2/3 md:mt-0 md:flex-row md:items-center md:flex md:justify-start lg:space-x-8">
+                <a class="inline-block w-full py-2 mx-0 font-medium text-left md:w-auto md:px-0 md:mx-2 hover:text-primary lg:mx-3 md:text-center" href="./index.html">Overview</a>
+                <a class="inline-block w-full py-2 mx-0 ml-6 font-medium text-left md:ml-0 md:w-auto md:px-0 md:mx-2 md:text-center md:text-primary-500 lg:mx-3" href="./pompeii.html">Pompeii</a>
+                <a class="inline-block w-full py-2 mx-0 font-medium text-left md:w-auto md:px-0 md:mx-2 hover:text-primary lg:mx-3 md:text-center" href="./herculaneum.html">Herculaneum</a>
+            </div>
+            <div class="flex items-center justify-start h-full pr-4 md:w-2/3 md:justify-center md:pr-0">
+                <a class="py-4 flex md:py-0" href="./index.html">
+                    <h1 class="text-2xl font-bold tracking-tighter text-primary-500">The Roman Experience</h1>
+                </a>
+            </div>
+            <div class="items-start justify-center w-full space-x-6 text-center text-sm hidden md:w-2/3 md:mt-0 md:flex-row md:items-center md:flex md:justify-end lg:space-x-8">
+                <a class="inline-block w-full py-2 mx-0 font-medium text-left md:w-auto md:px-0 md:mx-2 hover:text-primary lg:mx-3 md:text-center" href="./naples.html">Naples</a>
+                <a class="inline-block w-full py-2 mx-0 font-medium text-left md:w-auto md:px-0 md:mx-2 hover:text-primary lg:mx-3 md:text-center" href="./basilicas.html">Basilicas</a>
+                <a class="inline-block w-full py-2 mx-0 font-medium text-left md:w-auto md:px-0 md:mx-2 hover:text-primary lg:mx-3 md:text-center" href="./monuments.html">Monuments</a>
+            </div>
+            <div :data-headlessui-state="open ? &#x27;open&#x27;: &#x27;&#x27;" x-data="{open: false}" class="md:hidden">
+                <div :data-headlessui-state="open ? &#x27;open&#x27;: &#x27;&#x27;" x-on:click="open = !open">
+                    <span class="w-full text-3xl md:hidden">
+                        <svg stroke="currentColor" fill="none" strokeWidth="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                    </span>
+                </div>
+                <ul :data-headlessui-state="open ? &#x27;open&#x27;: &#x27;&#x27;" class="absolute text-gray-900 mt-2 origin-top-right divide-y divide-gray-100 shadow-lg left-px right-px pl-2 pt-5 pb-4 bg-white dark:bg-black dark:text-slate-100 dark:divide-gray-700 dark:shadow-gray-800" x-show="open">
+                    <li x-data="{active: false}" :data-headlessui-state="active ? &#x27;active&#x27; : &#x27;&#x27;" class="group flex items-center w-full px-2 py-2 text-sm" x-on:mouseenter="active = true" x-on:mouseleave="active = false">
+                        <a href="./index.html">Overview</a>
+                    </li>
+                    <li x-data="{active: true}" :data-headlessui-state="active ? &#x27;active&#x27; : &#x27;&#x27;" class="group flex items-center w-full px-2 py-2 text-sm" x-on:mouseenter="active = true" x-on:mouseleave="active = false">
+                        <a href="./pompeii.html">Pompeii</a>
+                    </li>
+                    <li x-data="{active: false}" :data-headlessui-state="active ? &#x27;active&#x27; : &#x27;&#x27;" class="group flex items-center w-full px-2 py-2 text-sm" x-on:mouseenter="active = true" x-on:mouseleave="active = false">
+                        <a href="./herculaneum.html">Herculaneum</a>
+                    </li>
+                    <li x-data="{active: false}" :data-headlessui-state="active ? &#x27;active&#x27; : &#x27;&#x27;" class="group flex items-center w-full px-2 py-2 text-sm" x-on:mouseenter="active = true" x-on:mouseleave="active = false">
+                        <a href="./naples.html">Naples</a>
+                    </li>
+                    <li x-data="{active: false}" :data-headlessui-state="active ? &#x27;active&#x27; : &#x27;&#x27;" class="group flex items-center w-full px-2 py-2 text-sm" x-on:mouseenter="active = true" x-on:mouseleave="active = false">
+                        <a href="./basilicas.html">Basilicas</a>
+                    </li>
+                    <li x-data="{active: false}" :data-headlessui-state="active ? &#x27;active&#x27; : &#x27;&#x27;" class="group flex items-center w-full px-2 py-2 text-sm" x-on:mouseenter="active = true" x-on:mouseleave="active = false">
+                        <a href="./monuments.html">Monuments</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Spacer -->
+    <div class="h-16"></div>
+
+    <!-- Hero/Main -->
+    <div class="md:py-16">
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <h1 class="font-bold tracking-tight dark:text-slate-100 text-4xl text-slate-900 lg:text-5xl">Pompeii</h1>
+                <p class="text-base lg:text-lg 2xl:text-gray-500">Pompeii, located near Naples, was an ancient Roman city tragically buried by the eruption of Mount Vesuvius in 79 AD. This well-preserved archaeological site offers a captivating window into the daily life and cultural richness of ancient Rome. Walking through Pompeii reveals grand buildings, intricate mosaics, and stunning frescoes that showcase the city's opulence. Exploring Pompeii allows visitors to immerse themselves in its vibrant history, experiencing the grandeur and tragedy of this once-thriving city.</p>
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/pompeii/pano.png" />
+            </div>
+        </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="border-t border-gray-200 dark:border-gray-700"></div>
+
+    <!-- Gallery -->
+    <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+        <h1 class="font-bold tracking-tight dark:text-slate-100 text-4xl text-slate-900 lg:text-5xl">A Short Gallery</h1>
+        <div class="h-16"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <h1 class="font-black tracking-normal text-3xl dark:text-slate-100 sm:text-4xl sm:text-slate-900">The Theater</h1>
+                <p class="text-base lg:text-lg 2xl:text-gray-500">The Large Theater in Pompeii is an impressive archaeological site that showcases the architectural prowess of its time. With its semicircular design, it could accommodate up to 5,000 spectators, making it a significant venue for various performances and entertainment. The well-preserved structure offers valuable insights into the cultural vibrancy of ancient Pompeii.</p>
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/pompeii/amphitheater.png" />
+            </div>
+        </div>
+        <div class="h-16"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/pompeii/street.png" />
+            </div>
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <h1 class="font-black tracking-normal text-3xl dark:text-slate-100 sm:text-4xl sm:text-slate-900">The Streets</h1>
+                <p class="text-base lg:text-lg 2xl:text-gray-500">The streets of Pompeii provide a fascinating window into both the engineering and social aspects of the ancient city. These remarkably preserved thoroughfares, constructed with stone and featuring sidewalks, offer insights into the meticulous urban planning and infrastructure of that era. Walking along these ancient paths reveals the remnants of wheel ruts, stepping stones, and the presence of various structures lining the streets. These elements shed light on the transportation systems, social interactions, and bustling commercial activities that characterized life in Pompeii.</p>
+            </div>
+        </div>
+        <div class="h-16"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <h1 class="font-black tracking-normal text-3xl dark:text-slate-100 sm:text-4xl sm:text-slate-900">The Baths</h1>
+                <p class="text-base lg:text-lg 2xl:text-gray-500">The well-preserved Pompeii baths are a fascinating representation of the advanced bathing customs of ancient Rome. These structures contained multiple rooms and pools designed for bathing and relaxation. One noteworthy aspect is the raised floor (pictured), called the suspensura, which facilitated the circulation of warm air beneath and heated the rooms above. This ingenious engineering method ensured a cozy and pleasant atmosphere for bathers. The Pompeii baths offer valuable insights into the social and hygienic traditions of the era, providing visitors with a glimpse into the lavish lifestyle and communal bathing rituals of the ancient Roman civilization.</p>
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/pompeii/baths.png" />
+            </div>
+        </div>
+        <div class="h-16"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/pompeii/thermopolium.png" />
+            </div>
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <h1 class="font-black tracking-normal text-3xl dark:text-slate-100 sm:text-4xl sm:text-slate-900">The Thermopolium</h1>
+                <p class="text-base lg:text-lg 2xl:text-gray-500">Pompeii's thermopoliums are well-preserved remnants of the city's vibrant food culture. These establishments served as street food vendors, offering a variety of prepared meals and drinks. With stone counters and dolia (large terracotta jars) for food storage and serving, these thermopoliums were adorned with intricate frescoes depicting the available culinary delights. Beyond providing sustenance, these establishments also functioned as social gathering spots, where locals and visitors would convene for a quick meal and engaging conversations. Exploring Pompeii's thermopoliums provides a fascinating insight into the lively street food scene and communal dining customs of ancient Rome.</p>
+            </div>
+        </div>
+        <div class="h-16"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <h1 class="font-black tracking-normal text-3xl dark:text-slate-100 sm:text-4xl sm:text-slate-900">The Forum</h1>
+                <p class="text-base lg:text-lg 2xl:text-gray-500">The Pompeii Forum, an intriguing archaeological site, served as the vibrant epicenter of the ancient city. This central public square was a bustling hub for social, political, and economic activities. Surrounded by impressive buildings, temples, and markets, it thrived as a vibrant center for commerce and civic life. The Forum hosted significant public events, including speeches, elections, and legal proceedings. Preserved architectural elements like colonnades and statues provide valuable glimpses into the grandeur and importance of this historic civic space. Exploring the Pompeii Forum offers a remarkable opportunity to engage with the rich history and cultural legacy of this once-thriving Roman city.</p>
+            </div>
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/pompeii/forum.png" />
+            </div>
+        </div>
+        <div class="h-16"></div>
+        <div class="max-w-7xl mx-auto flex items-center gap-6 px-5 flex-col py-14 md:flex-row lg:py-2 xl:py-0">
+            <div class="w-full lg:w-7/12">
+                <img class="sm:mx-9 sm:-my-16 md:mx-0 md:my-0 lg:w-full" src="./assets/pompeii/basilica.png" />
+            </div>
+            <div class="flex flex-col gap-7 lg:w-8/12 xl:w-3/5">
+                <h1 class="font-black tracking-normal text-3xl dark:text-slate-100 sm:text-4xl sm:text-slate-900">The Basilica</h1>
+                <p class="text-base lg:text-lg 2xl:text-gray-500">The Pompeii Basilica, an impressive archaeological site, exemplifies the architectural and civic significance of ancient Rome. This grand structure served as a versatile space, combining features of a courthouse, marketplace, and social gathering spot. With its spacious central hall and columns, the basilica hosted legal proceedings, commercial activities, and social interactions. Its well-preserved architectural details, including ornate friezes, provide insights into the artistic sophistication of the era. Exploring the Pompeii Basilica offers a glimpse into the vital role it played in the daily life of the city as a civic and commercial hub.</p>
+            </div>
+        </div>
+        <div class="h-16"></div>
+        <p class="text-base lg:text-lg 2xl:text-gray-500 text-center">There's a lot more to see at the archaeological site of Pompeii. Unfortunately, due to how quick our tour was, we both didn't have the chance to see all of it, nor take pictures of all of it.</p>
+      </div>
+
+    <!-- Footer -->
+    <div class="text-center py-1 max-w-7xl mx-auto border-t border-gray-200 dark:border-gray-600">
+        <p class="w-4/5 mx-auto my-5 text-sm leading-5 h-4">© 2023, Andrea Dall'Ara. Some Rights Reserved</p>
+    </div>
+
+    <!-- AlpineJS Library -->
+    <script defer src="https://unpkg.com/alpinejs@3.9.0/dist/cdn.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            offset: 50,
+            duration: 800
+        });
+    </script>
+</body>
+</html>
